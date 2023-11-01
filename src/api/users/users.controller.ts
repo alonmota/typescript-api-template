@@ -4,12 +4,12 @@ import { UserDto } from './dto/user.dto';
 
 @Controller('users')
 export class UsersController {
-  constructor(private userService: UsersService) {}
+	constructor(private userService: UsersService) {}
 
-  @Version('1')
-  @Get()
-  @HttpCode(HttpStatus.OK)
-  getUsers(): Promise<UserDto> {
-    return this.userService.getUsers();
-  }
+	@Version('1')
+	@Get()
+	@HttpCode(HttpStatus.OK)
+	getUsers(): Promise<UserDto> {
+		return this.userService.getUsers();
+	}
 }
