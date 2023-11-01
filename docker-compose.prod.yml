@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  typescript-api-template:
+    container_name: typescript-api-template-prod
+    environment:
+      - NODE_ENV=production

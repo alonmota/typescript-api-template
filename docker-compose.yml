@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  typescript-api-template:
+    image: typescript-api-template
+    container_name: typescript-api-template-dev
+    restart: always
+    build:
+      context: .
+      args:
+        PORT: ${PORT}
+    env_file:
+      - ./.env
+    ports:
+      - ${PORT}:${PORT}
+    volumes:
+      - /usr/src/app/node_modules
+      - .:/usr/src/app
+    command: npm start
+
+
