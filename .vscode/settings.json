@@ -1,0 +1,17 @@
+{
+		"cSpell.words": [
+				"Injectable",
+				"microservices",
+				"nestjs",
+				"postgres"
+		],
+		"editor.detectIndentation": false,
+		"editor.codeActionsOnSave": {
+			"source.fixAll": true
+		},
+		"eslint.validate": [
+			"javascript",
+			"typescript"
+		],
+		"git.ignoreLimitWarning": true,
+}
