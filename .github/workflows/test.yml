@@ -1,29 +1,29 @@
 name: tests
 on:
-	push:
-		branches-ignore: [main]
-	workflow_dispatch:
+  push:
+    branches-ignore: [main]
+  workflow_dispatch:
 
 jobs:
-	run-unit-tests:
-		name: Run Unit Tests
-		strategy:
-			matrix:
-				node_version: [lts/*, latest, 16]
-			fail-fast: false
-		runs-on: ubuntu-latest
+  run-unit-tests:
+    name: Run Unit Tests
+    strategy:
+      matrix:
+        node_version: [lts/*, latest, 16]
+      fail-fast: false
+    runs-on: ubuntu-latest
 
-		steps:
-			- name: Check out Git repository
-				uses: actions/checkout@v3
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v3
 
-			- name: Set up Node.js
-				uses: actions/setup-node@v3
-				with:
-					node-version: 16
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
 
-			- name: Install Node.js dependencies
-				run: yarn
+      - name: Install Node.js dependencies
+        run: yarn
 
-			- name: Run Unit Tests
-				run: yarn test
+      - name: Run Unit Tests
+        run: yarn test

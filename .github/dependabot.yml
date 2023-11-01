@@ -1,15 +1,15 @@
 version: 2
 updates:
-	- package-ecosystem: npm
-		directory: "/"
-		schedule:
-			interval: weekly
-			day: tuesday
-			time: "02:00"
-		open-pull-requests-limit: 10
-		versioning-strategy: 'increase'
-		labels:
-			- 'dependencies'
-		target-branch: "develop"
-		labels:
-			- dependabot
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: tuesday
+      time: "02:00"
+    open-pull-requests-limit: 10
+    versioning-strategy: 'increase'
+    labels:
+      - 'dependencies'
+    target-branch: "develop"
+    labels:
+      - dependabot
