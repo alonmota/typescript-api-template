@@ -14,9 +14,12 @@ import {
 	SwaggerModule,
 } from '@nestjs/swagger';
 import { API_DESCRIPTION, API_TITLE } from './common/resources';
+import { ConfigService } from '@nestjs/config';
 
 export async function bootstrap(): Promise<INestApplication> {
 	const app = await NestFactory.create(AppModule);
+
+	const appConfigs = app.get(ConfigService);
 
 	// Must have plugins
 	app.use(helmet());
@@ -39,7 +42,7 @@ export async function bootstrap(): Promise<INestApplication> {
 	);
 
 	// Setup swagger
-	const config = new DocumentBuilder()
+	const swaggerConfig = new DocumentBuilder()
 		.setTitle(API_TITLE)
 		.setDescription(API_DESCRIPTION)
 		.setVersion(process.env.npm_package_version)
@@ -51,13 +54,12 @@ export async function bootstrap(): Promise<INestApplication> {
 	const options: SwaggerDocumentOptions = {
 		operationIdFactory: (controllerKey: string, methodKey: string) => methodKey,
 	};
-	const document = SwaggerModule.createDocument(app, config, options);
+	const document = SwaggerModule.createDocument(app, swaggerConfig, options);
 	SwaggerModule.setup('api', app, document);
 
 	// Start server
-	const port = 3000;
+	const port = appConfigs.get('PORT');
 	await app.listen(port);
-
 	console.info(`server running on ${await app.getUrl()}`);
 
 	return app;
