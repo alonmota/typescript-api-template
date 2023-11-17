@@ -10,14 +10,6 @@ export class UsersController {
 
 	@Version('1')
 	@Get()
-	@ApiResponse({
-		status: HttpStatus.OK,
-		description: 'Operation successful',
-	})
-	@ApiResponse({
-		status: HttpStatus.INTERNAL_SERVER_ERROR,
-		description: 'Internal server error',
-	})
 	getUsers(): Promise<UserDto> {
 		return this.userService.getUsers();
 	}

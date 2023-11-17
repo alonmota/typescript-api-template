@@ -15,17 +15,18 @@ import {
 } from '@nestjs/swagger';
 import { API_DESCRIPTION, API_TITLE } from './common/resources';
 import { ConfigService } from '@nestjs/config';
-import * as csurf from 'csurf';
 
 export async function bootstrap(): Promise<INestApplication> {
 	const app = await NestFactory.create(AppModule, { cors: true });
-
 	const appConfigs = app.get(ConfigService);
+	
+	// Configure prefix
+	// const apiPrefix = appConfigs.get('API_PREFIX');
+	// app.setGlobalPrefix(apiPrefix);
 
 	// Must have plugins
 	app.use(helmet());
 	app.use(compression());
-	app.use(csurf());
 
 	// Enable versioning
 	app.enableVersioning({
