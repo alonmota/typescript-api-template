@@ -19,7 +19,7 @@ import { ConfigService } from '@nestjs/config';
 export async function bootstrap(): Promise<INestApplication> {
 	const app = await NestFactory.create(AppModule, { cors: true });
 	const appConfigs = app.get(ConfigService);
-	
+
 	// Configure prefix
 	// const apiPrefix = appConfigs.get('API_PREFIX');
 	// app.setGlobalPrefix(apiPrefix);
